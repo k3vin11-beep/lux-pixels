@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lux Pixels | Photography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f1218;--surface:#171b24;--line:#2a3040;--text:#eef0f4;--muted:#9aa3b5;--accent:#e2c79a;--on-accent:#1a1408;--ok:#7fd1a0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f6f4f0;--surface:#fff;--line:#dcd7cd;--text:#16181d;--muted:#5d6472;--accent:#8a6a2f;--on-accent:#fff;--ok:#1f7a45}}
+:root[data-theme="dark"]{--bg:#0f1218;--surface:#171b24;--line:#2a3040;--text:#eef0f4;--muted:#9aa3b5;--accent:#e2c79a;--on-accent:#1a1408}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%;scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 Inter,system-ui,sans-serif;min-height:100%}
+h1,h2,h3{font-family:'Bricolage Grotesque',Inter,system-ui,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font:800 20px 'Bricolage Grotesque',sans-serif;text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:15px;color:var(--muted)}
+nav ul a{text-decoration:none}nav ul a:hover{color:var(--text)}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);border:0;border-radius:999px;padding:13px 26px;font:600 15px Inter,sans-serif;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.hero{padding:84px 0 56px}
+.hero h1{font-size:clamp(56px,13vw,150px);font-weight:800;letter-spacing:-.045em}
+.hero h1 span{color:var(--accent)}
+.hero p{max-width:46ch;color:var(--muted);font-size:19px;margin:22px 0 32px}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+section{padding:64px 0}
+h2{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.03em;margin-bottom:10px}
+.sub{color:var(--muted);max-width:52ch;margin:0 0 28px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.chip{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font:500 14px Inter,sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.shot{position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--line);cursor:pointer;padding:0;color:inherit;text-align:left}
+.shot:nth-child(5n+1){grid-row:span 1}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot .empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);font-size:14px;background:repeating-linear-gradient(135deg,transparent 0 14px,color-mix(in srgb,var(--line) 45%,transparent) 14px 15px)}
+.shot .empty b{font:600 28px 'Bricolage Grotesque',sans-serif;color:var(--accent)}
+.shot .tag{position:absolute;left:12px;bottom:12px;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(8px);border-radius:999px;padding:5px 12px;font-size:13px}
+.note{color:var(--muted);font-size:14px;margin-top:16px}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.cats div{padding:26px;border-right:1px solid var(--line);background:var(--surface)}
+.cats div:last-child{border-right:0}
+.cats h3{font-size:22px;margin-bottom:8px}
+.cats p{margin:0;color:var(--muted);font-size:15px}
+.book{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start}
+@media(max-width:820px){.book{grid-template-columns:1fr}nav ul{display:none}.cats div{border-right:0;border-bottom:1px solid var(--line)}}
+form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form .full{grid-column:1/-1}
+@media(max-width:520px){form{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+input,select,textarea{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;font:400 15px Inter,sans-serif}
+textarea{min-height:90px;resize:vertical}
+.err{color:#ef8a8a;font-size:14px;min-height:20px;margin:0}
+.contact a{display:block;margin:6px 0;color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+dialog{border:0;background:transparent;padding:0;max-width:92vw;max-height:92vh}
+dialog::backdrop{background:rgba(0,0,0,.85)}
+dialog img{max-width:92vw;max-height:84vh;border-radius:12px;display:block}
+dialog .close{margin-top:10px;float:right}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="logo" href="#top">Lux<span>Pixels</span></a>
+  <ul><li><a href="#gallery">Gallery</a></li><li><a href="#services">Shoots</a></li><li><a href="#book">Book</a></li></ul>
+  <a class="btn" href="#book">Book a shoot</a>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <h1>Lux<br><span>Pixels</span></h1>
+  <p>Photography for the moments you only get once: matric dances, graduations, celebrations and styled shoots.</p>
+  <div class="row"><a class="btn" href="#book">Book a shoot</a><a class="btn ghost" href="#gallery">View gallery</a></div>
+</div></header>
+
+<section id="gallery"><div class="wrap">
+  <h2>Gallery</h2>
+  <p class="sub">Browse recent work by category.</p>
+  <div class="chips" id="chips" role="group" aria-label="Filter gallery"></div>
+  <div class="grid" id="grid"></div>
+  <p class="note">Demo mode: tap an empty frame to add a photo from your device. For the live site, set each photo's <code>src</code> in the PHOTOS list in the page code.</p>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <h2>What we shoot</h2>
+  <p class="sub">Pick the category that fits. Not sure? Message us and we will help you choose.</p>
+  <div class="cats">
+    <div><h3>MD</h3><p>Matric dance portraits, couples, groups and arrivals.</p></div>
+    <div><h3>Graduations</h3><p>Ceremony day and campus portraits in your gown.</p></div>
+    <div><h3>Special Occasions</h3><p>Birthdays, engagements, family gatherings and events.</p></div>
+    <div><h3>Photo shoot</h3><p>Studio or outdoor sessions for portraits and brands.</p></div>
+  </div>
+</div></section>
+
+<section id="book"><div class="wrap book">
+  <div class="contact">
+    <h2>Book a shoot</h2>
+    <p class="sub">Fill in the form and it opens a WhatsApp message to Lux Pixels with your details. We confirm availability and pricing there.</p>
+    <a href="https://wa.me/27813240845" target="_blank" rel="noopener">WhatsApp: +27 81 324 0845</a>
+    <a href="https://www.instagram.com/lux.pixelss" target="_blank" rel="noopener">Instagram: @lux.pixelss</a>
+  </div>
+  <form id="f" novalidate>
+    <label class="full">Full name<input id="name" autocomplete="name" required></label>
+    <label>Category<select id="cat"><option>MD</option><option>Graduations</option><option>Special Occasions</option><option>Photo shoot</option></select></label>
+    <label>Preferred date<input id="date" type="date" required></label>
+    <label>Time<select id="time"><option>Morning</option><option>Afternoon</option><option>Evening</option></select></label>
+    <label>Location<input id="loc" placeholder="Venue or area"></label>
+    <label class="full">Anything else?<textarea id="msg" placeholder="Group size, ideas, outfits"></textarea></label>
+    <p class="err full" id="err" role="alert"></p>
+    <button class="btn full" type="submit">Send booking on WhatsApp</button>
+  </form>
+</div></section>
+
+<footer><div class="wrap"><span>Lux Pixels</span><a href="https://www.instagram.com/lux.pixelss" target="_blank" rel="noopener">@lux.pixelss</a></div></footer>
+
+<dialog id="lb"><img id="lbimg" alt=""><button class="btn ghost close" id="lbx">Close</button></dialog>
+<input type="file" id="pick" accept="image/*" hidden>
+
+<script>
+// Replace src with the client's image file paths/URLs when going live.
+const PHOTOS=[
+ {cat:'MD',src:'MD-1.jpg'},{cat:'Graduations',src:'graduation-1.jpg'},{cat:'Photo shoot',src:'photoshoot-1.jpg'},
+ {cat:'MD',src:'MD-2.jpg'},{cat:'Graduations',src:'graduation-2.jpg'},
+];
+const CATS=['All','MD','Graduations','Special Occasions','Photo shoot'];
+let active='All',target=null;
+const grid=document.getElementById('grid'),chips=document.getElementById('chips'),pick=document.getElementById('pick'),lb=document.getElementById('lb');
+function renderChips(){
+  chips.innerHTML='';
+  CATS.forEach(c=>{
+    const n=c==='All'?PHOTOS.length:PHOTOS.filter(p=>p.cat===c).length;
+    const b=document.createElement('button');b.className='chip';b.textContent=c+' ('+n+')';
+    b.setAttribute('aria-pressed',c===active);
+    b.onclick=()=>{active=c;renderChips();renderGrid()};
+    chips.appendChild(b);
+  });
+}
+function renderGrid(){
+  grid.innerHTML='';
+  PHOTOS.forEach((p,i)=>{
+    if(active!=='All'&&p.cat!==active)return;
+    const b=document.createElement('button');b.className='shot';
+    b.setAttribute('aria-label',p.src?'Open '+p.cat+' photo':'Add '+p.cat+' photo');
+    b.innerHTML=(p.src?'<img alt="'+p.cat+' photo by Lux Pixels" src="'+p.src+'">':'<div class="empty"><b>+</b>Add photo</div>')+'<span class="tag">'+p.cat+'</span>';
+    b.onclick=()=>{
+      if(p.src){document.getElementById('lbimg').src=p.src;lb.showModal()}
+      else{target=i;pick.click()}
+    };
+    grid.appendChild(b);
+  });
+}
+pick.onchange=()=>{
+  const f=pick.files[0];
+  if(f&&target!==null){PHOTOS[target].src=URL.createObjectURL(f);renderGrid()}
+  pick.value='';
+};
+document.getElementById('lbx').onclick=()=>lb.close();
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
+renderChips();renderGrid();
+
+const d=document.getElementById('date');
+d.min=new Date().toISOString().slice(0,10);
+document.getElementById('f').addEventListener('submit',e=>{
+  e.preventDefault();
+  const v=id=>document.getElementById(id).value.trim(),err=document.getElementById('err');
+  if(!v('name')||!v('date')){err.textContent='Add your name and a preferred date to continue.';return}
+  err.textContent='';
+  const text='Hi Lux Pixels, I would like to book a shoot.\n'
+   +'Name: '+v('name')+'\nCategory: '+v('cat')+'\nDate: '+v('date')+'\nTime: '+v('time')
+   +(v('loc')?'\nLocation: '+v('loc'):'')+(v('msg')?'\nNotes: '+v('msg'):'');
+  window.open('https://wa.me/27813240845?text='+encodeURIComponent(text),'_blank','noopener');
+});
+</script>
+</body>
+</html>
